@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken')
 const User = require('../models/userModel')
 const { catchAsyncError } = require('../utils/catchAsyncError')
 exports.isAuthenticated = catchAsyncError( async(req,res,next)=>{
+    console.log(req.cookies)
     const token = req.cookies.chatapp
     if(!token){
         return res.status(404).json({
