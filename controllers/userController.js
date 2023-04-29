@@ -53,7 +53,8 @@ exports.loginUser = catchAsyncError(async(req,res)=>{
     // console.log(cookieToken)
     res.cookie('chatapp',cookieToken,{
         secure: true,
-        httpOnly: true
+        httpOnly: true,
+        domain:'.vercel.app'
     })
     return res.status(200).send({
         status:'success',
