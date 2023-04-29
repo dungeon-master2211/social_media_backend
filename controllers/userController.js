@@ -54,6 +54,8 @@ exports.loginUser = catchAsyncError(async(req,res)=>{
     res.cookie('chatapp',cookieToken,{
         secure: true,
         httpOnly: true,
+        sameSite:'none',
+        domain:'.netlify.app'
     })
     return res.status(200).send({
         status:'success',
