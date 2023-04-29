@@ -55,7 +55,7 @@ exports.loginUser = catchAsyncError(async(req,res)=>{
         secure: true,
         httpOnly: true,
         sameSite:'none',
-        domain:'https://warm-alpaca-97871e.netlify.app'
+        domain:'https://chat-backend-00et.onrender.com'
     })
     return res.status(200).send({
         status:'success',
