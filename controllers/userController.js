@@ -55,7 +55,7 @@ exports.loginUser = catchAsyncError(async(req,res)=>{
         secure: true,
         httpOnly: true,
         sameSite:'none',
-        domain:'.netlify.app'
+        domain:'https://warm-alpaca-97871e.netlify.app'
     })
     return res.status(200).send({
         status:'success',
