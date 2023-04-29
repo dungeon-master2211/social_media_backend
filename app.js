@@ -34,6 +34,11 @@ const io = new Server(httpServer,{
 
 const PORT = process.env.PORT || 5000
 
+app.get('/',(req,res)=>{
+    return res.status(200).send({
+        message:'working'
+    })
+})
 app.use('/api/v1',userRouter)
 app.use('/api/v1',postRouter)
 
