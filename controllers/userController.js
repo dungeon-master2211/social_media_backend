@@ -65,6 +65,8 @@ exports.loginUser = catchAsyncError(async(req,res)=>{
 })
 exports.logout = catchAsyncError(async(req,res)=>{
     return res.clearCookie('chatapp',{
+        secure:true,
+        httpOnly:true,
         sameSite:'none'
     }).status(200).json({
         status:'success',
