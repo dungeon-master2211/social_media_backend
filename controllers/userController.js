@@ -64,7 +64,9 @@ exports.loginUser = catchAsyncError(async(req,res)=>{
     })
 })
 exports.logout = catchAsyncError(async(req,res)=>{
-    return res.clearCookie('chatapp').status(200).json({
+    return res.clearCookie('chatapp',{
+        sameSite:'none'
+    }).status(200).json({
         status:'success',
         message:'Logged Out!'
     })
