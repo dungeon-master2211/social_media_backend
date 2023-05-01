@@ -127,7 +127,7 @@ exports.removeFriend = catchAsyncError(async(req,res)=>{
     const me = await User.findById(myId)
     const index = me.friends.indexOf(friendId)
     if (index==-1) throw new ErrorHandler('No friends with this id exist',404)
-    const myDetail = await me.update({$pull:{"friends":friendId}})
+    await me.update({$pull:{"friends":friendId}})
     // me.friends.splice(index)
     // await me.save()
 
@@ -138,6 +138,7 @@ exports.removeFriend = catchAsyncError(async(req,res)=>{
     await friend.update({$pull:{"friends":myId}})
     // await friend.save()
 
+    const myDetail = await User.findById(myId).populate('friends')
     return res.status(200).json({
         status:'success',
         message:'Unfriend successfully!',
