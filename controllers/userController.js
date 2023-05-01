@@ -127,13 +127,15 @@ exports.removeFriend = catchAsyncError(async(req,res)=>{
     const me = await User.findById(myId)
     const index = me.friends.indexOf(friendId)
     if (index==-1) throw new ErrorHandler('No friends with this id exist',404)
-    me.friends.splice(index)
+    await me.update({$pull:{"friends":friendId}})
+    // me.friends.splice(index)
     await me.save()
 
     const friend = await User.findById(friendId)
     const myindex = friend.friends.indexOf(myId)
     if (myindex==-1) throw new ErrorHandler('No friends with this id exist',404)
-    friend.friends.splice(index)
+    // friend.friends.splice(index)
+    await friend.update({$pull:{"friends":myId}})
     await friend.save()
 
     return res.status(200).json({
