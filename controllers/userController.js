@@ -13,7 +13,7 @@ exports.registerUser = catchAsyncError(async(req,res)=>{
     if(!name || !email || !password || !confirmPassword)  throw new ErrorHandler('All credentials are required',404)
     if(password!==confirmPassword) throw new ErrorHandler('Password not matched',400)
     let isImg = false
-    let avatarUrl = ''
+    let avatarUrl = 'https://res.cloudinary.com/deklfg8nh/image/upload/h_100,w_100/blank-profile-picture-973460__340_pwtnrm.png'
     if(req.file){
     const b64 = Buffer.from(req.file.buffer).toString("base64");
     let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
